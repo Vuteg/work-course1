@@ -27,24 +27,24 @@ public class Main {
         System.out.println(employee3.getDepartment());
         System.out.println();
 
-        PrintAllEmployee();// список всех сотрудников со всеми имеющимися по ним данными
+        printAllEmployee();// список всех сотрудников со всеми имеющимися по ним данными
         System.out.println();
 
-        System.out.println("Сумма всех зарплат за месяц, состовляет: " + PrintAllSumSalary() + " Рублей");//общая сумма затрат на зарплаты в месяц
+        System.out.println("Сумма всех зарплат за месяц, состовляет: " + getAllSumSalary() + " Рублей");//общая сумма затрат на зарплаты в месяц
         System.out.println();
 
-        System.out.println("Среди всех сотрудников минимальная зарплата у " + PrintMinimumSalary() + " рублей ");//Сотрудник с минимальной зарплатой
-        System.out.println("Минимальная зарплата: " + MinSalary() + " рублей");//Минимальная зарплпта
+        System.out.println("Среди всех сотрудников минимальная зарплата у " + getMinimumSalary());//Сотрудник с минимальной зарплатой
+        System.out.println("Минимальная зарплата: " + getMinSalary() + " рублей");//Минимальная зарплпта
         System.out.println();
 
-        System.out.println("Среди всех сотрудников максимальная зарплата у " +PrintMaximumSalary() + " рублей ");//Сотрудник с максимальной зарплатой
-        System.out.println("Максимальная зарплата: " + MaxSalary() + " рублей");//Максимальная зарплата
+        System.out.println("Среди всех сотрудников максимальная зарплата у " + getMaximumSalary());//Сотрудник с максимальной зарплатой
+        System.out.println("Максимальная зарплата: " + getMaxSalary() + " рублей");//Максимальная зарплата
         System.out.println();
 
-        System.out.println("Среднее значение зарплат, " + PrintAverageSalary() + " рублей");//среднее значение зарплат
+        System.out.println("Среднее значение зарплат, " + getAverageSalary() + " рублей");//среднее значение зарплат
         System.out.println();
 
-        PrintAllNameEmployees();// Ф. И. О. всех сотрудников
+        printAllNameEmployees();// Ф. И. О. всех сотрудников
 
 
 //    +    1. Получить список всех сотрудников со всеми имеющимися по ним данными (вывести в консоль значения всех полей (toString)).
@@ -56,31 +56,31 @@ public class Main {
 //
 
     }
-    public static void PrintAllEmployee() {
+    public static void printAllEmployee() {
         for (int i = 0; i < employees.length; i++) {
             System.out.println(employees[i].toString());
         }
     }
-    public static double PrintAllSumSalary() {
+    public static double getAllSumSalary() {
         double allSalary = 0;
         for (int i = 0; i < employees.length; i++)
             allSalary += employees[i].getSalary();
         return allSalary;
     }
 
-    public static String PrintMinimumSalary() {
+    public static Employee getMinimumSalary() {
 
-        String nick = "";
+        Employee employeeMinSalary = new Employee();
         double min = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++){
             if(employees[i].getSalary() < min){
                 min = employees[i].getSalary();
-                nick = employees[i].getName();
+                employeeMinSalary = employees[i];
             }
         }
-        return nick + ", " + min;
+        return employeeMinSalary;
     }
-    public static double MinSalary() {
+    public static double getMinSalary() {
         double min = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getSalary() < min) {
@@ -90,18 +90,18 @@ public class Main {
         return min;
     }
 
-    public static String PrintMaximumSalary() {
-        String nick = "";
+    public static Employee getMaximumSalary() {
+        Employee employeeMaxSalary = new Employee();
         double max = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
             if(employees[i].getSalary() > max){
-                max = employees[i].getSalary();
-                nick = employees[i].getName();
+              max = employees[i].getSalary();
+              employeeMaxSalary = employees[i];
             }
         }
-        return nick + ", " + max;
+        return employeeMaxSalary;
     }
-    public static double MaxSalary() {
+    public static double getMaxSalary() {
         double max = employees[0].getSalary();
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getSalary() > max) {
@@ -111,12 +111,12 @@ public class Main {
         return max;
     }
 
-    public static double PrintAverageSalary(){
-        double averageMeaning = PrintAllSumSalary();
+    public static double getAverageSalary(){
+        double averageMeaning = getAllSumSalary();
         averageMeaning /= employees.length;
         return averageMeaning;
     }
-    public static void PrintAllNameEmployees(){
+    public static void printAllNameEmployees(){
         for (int i = 0; i < employees.length; i++) {
             System.out.println(employees[i].getName());
         }

@@ -6,13 +6,13 @@ public class Employee {
     private int department;
     private double salary;
     private int id;
-    public static int size = 1;
+    public static int count = 1;
     public Employee(String name, int department, double salary) {
         this.name = name;
         this.department = department;
         this.salary = salary;
-        this.id=size;
-        size++;
+        this.id=count;
+        count++;
     }
     public Employee() {
 
@@ -42,13 +42,17 @@ public class Employee {
     public String toString() {
         return "Ф.И.О - " + name + ", отдел " + department + ", Зарплата " + salary + " Рублей" + ", id- " + id;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Employee employees = (Employee) o;
-        return Objects.equals(name, employees.name);}
+        Employee employee = (Employee) o;
+        return id == employee.id;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name);}
+        return Objects.hash(id);
+    }
 }
